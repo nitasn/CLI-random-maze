@@ -1,6 +1,5 @@
 from random import randrange, choice
 
-
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 '''''''''        maze            '''''''''''''''''''''''''''''''''''''''''''''''''''
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -45,23 +44,35 @@ class Maze:
                         right = self.are_connected((row, col + 1), (row + 1, col + 1))
                         left = self.are_connected((row, col), (row + 1, col))
 
+                        # blocks = '┼', '├', '┤', '│', '┴', '└', '┘', '╵', '┬', '┌', '┐', '╷', '─', '╶', '╴', '·'
+                        #
+                        # something like should should work... 
+                        #
+                        # idx = 0 
+                        # for part in (left, right, bottom, top):
+                        #     if part:
+                        #         idx |= 1
+                        #     idx <<= 1
+                        #
+                        # builder.append(blocks[idx])      # but why bother
+
                         builder.append(
-                            '┼' if not top and not bottom and not right and not left else
-                            '├' if not top and not bottom and not right and     left else
-                            '┤' if not top and not bottom and     right and not left else
-                            '│' if not top and not bottom and     right and     left else
-                            '┴' if not top and     bottom and not right and not left else
-                            '└' if not top and     bottom and not right and     left else
-                            '┘' if not top and     bottom and     right and not left else
-                            '╵' if not top and     bottom and     right and     left else
-                            '┬' if     top and not bottom and not right and not left else
-                            '┌' if     top and not bottom and not right and     left else
-                            '┐' if     top and not bottom and     right and not left else
-                            '╷' if     top and not bottom and     right and     left else
-                            '─' if     top and     bottom and not right and not left else
-                            '╶' if     top and     bottom and not right and     left else
-                            '╴' if     top and     bottom and     right and not left else
-                            '·' if     top and     bottom and     right and     left else '')
+                            '┼' if  (not top)  and  (not bottom)  and  (not right)  and  (not left)  else
+                            '├' if  (not top)  and  (not bottom)  and  (not right)  and  (left)      else
+                            '┤' if  (not top)  and  (not bottom)  and  (right)      and  (not left)  else
+                            '│' if  (not top)  and  (not bottom)  and  (right)      and  (left)      else
+                            '┴' if  (not top)  and  (bottom)      and  (not right)  and  (not left)  else
+                            '└' if  (not top)  and  (bottom)      and  (not right)  and  (left)      else
+                            '┘' if  (not top)  and  (bottom)      and  (right)      and  (not left)  else
+                            '╵' if  (not top)  and  (bottom)      and  (right)      and  (left)      else
+                            '┬' if  (top)      and  (not bottom)  and  (not right)  and  (not left)  else
+                            '┌' if  (top)      and  (not bottom)  and  (not right)  and  (left)      else
+                            '┐' if  (top)      and  (not bottom)  and  (right)      and  (not left)  else
+                            '╷' if  (top)      and  (not bottom)  and  (right)      and  (left)      else
+                            '─' if  (top)      and  (bottom)      and  (not right)  and  (not left)  else
+                            '╶' if  (top)      and  (bottom)      and  (not right)  and  (left)      else
+                            '╴' if  (top)      and  (bottom)      and  (right)      and  (not left)  else
+                            '·')
                 builder.append('\n')
 
         builder.append('└')
@@ -87,8 +98,8 @@ class Maze:
         self.connections = set()  # each element is a frozenset({cell1, cell2}) [cell is an (i, j) coordinates tuple]
 
         # for (i, j) in self.all_coordinates():
-        # 	self.__connect((i, j), (i + 1, j))
-        # 	self.__connect((i, j), (i, j + 1))
+        #   self.__connect((i, j), (i + 1, j))
+        #   self.__connect((i, j), (i, j + 1))
 
         self.__init_at_random()
 
@@ -161,6 +172,7 @@ class Maze:
                 stack.append(neighbor)
 
 
+                
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 '''''''''        main            '''''''''''''''''''''''''''''''''''''''''''''''''''
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -195,13 +207,13 @@ def get_dimensions_from_cmd_args():
 
         except AssertionError:
             print('invalid arguments \n')
-            print('please make (num_rows > 0) and (num_columns > 1)')
+            print('plase make (num_rows > 0) and (num_columns > 1)')
             exit()
     else:
         print('invalid arguments \n')
         display_help_and_exit()
 
-    return rows, cols
+    return (rows, cols)
 
 
 def main():
