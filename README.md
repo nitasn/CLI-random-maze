@@ -1,6 +1,6 @@
 # CLI-random-maze
 
-prints random mazes, using special chars like ┴ and┌ to the console.
+prints random mazes, of custom sizes, using special chars like ┴ and ┌
 
 usage: ``` python3 maze.py <num_rows> <num_columns> ```
 ```bash
