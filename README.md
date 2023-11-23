@@ -1,8 +1,13 @@
 # CLI-random-maze
 
-prints random mazes, of custom sizes, using special chars like ┴ and ┌
+Generate beautiful mazes in you terminal.
 
-usage: ``` python3 maze.py <num_rows> <num_columns> ```
+## Usage
+Run ``` python3 maze.py fill ``` to fill up the entire terminal window:
+![screenshot maze fill](https://github.com/nitasn/CLI-random-maze/blob/main/ScreenShotFill.png?raw=true)
+
+Or ``` python3 maze.py <num_rows> <num_columns> ``` for custom dimensions:
+
 ```bash
 $ python3 maze.py 3 10
 ╷ ↓ ╶───────┬───────────────────┬───────┐
@@ -28,5 +33,4 @@ $ python3 maze.py 6 4
 │               │
 └───────────╴ ↓ ╵
 ```
-or ``` python3 maze.py fill ``` to fill up the entire terminal window:
-![screenshot maze fill](https://github.com/nitasn/CLI-random-maze/blob/main/ScreenShotFill.png?raw=true)
+
