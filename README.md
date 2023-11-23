@@ -1,6 +1,6 @@
 # CLI-random-maze
 
-Generate beautiful mazes in you terminal.
+Generate beautiful mazes in your terminal.
 
 ## Usage
 Run ``` python3 maze.py fill ``` to fill up the entire terminal window:
